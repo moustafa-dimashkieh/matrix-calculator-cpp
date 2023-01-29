@@ -19,10 +19,11 @@ int main() {
         cout << "1. Matrix Addition\n"
              << "2. Matrix Subtraction\n"
              << "3. Matrix Multiplication\n"
-             << "4. Matrix Determinant\n"
-             << "5. Matrix Inverse\n"
-             << "6. Matrix Transpose.\n"
-             << "7. Exit\n"
+             << "4. Matrix Transpose\n"
+             << "5. Matrix Power\n"
+             << "6. Matrix Inverse.\n"
+             << "7. Matrix Determinant.\n"
+             << "8. Exit\n"
              << "Choose from the following menu:";
 
         cin >> choice;
@@ -162,7 +163,7 @@ int main() {
             }
 
         }
-    }while (choice!=7);
+    }while (choice!=8);
 
     return 0;
 }
