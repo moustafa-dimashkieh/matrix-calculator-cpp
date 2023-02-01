@@ -1,8 +1,8 @@
 //
-// Updated by Moustafa Dimashkieh on 1/30/2023.
+// Updated by Moustafa Dimashkieh on 2/1/2023.
 //
 
-// #include "../test/test-matrix.h"
+//#include "../test/test-matrix.h"
 #include "../matrix/Matrix.h"
 #include <iostream>
 #include <iomanip>
@@ -23,7 +23,7 @@ int main() {
              << "4. Matrix Transpose\n"
              << "5. Matrix Power\n"
              << "6. Matrix Inverse" << right << setw(40) << "*** UNDER DEVELOPMENT ***\n"
-             << "7. Matrix Determinant" << right << setw(36) << "*** UNDER DEVELOPMENT ***\n"
+             << "7. Matrix Determinant\n"
              << "8. Exit\n"
              << "Choose from the following menu:";
 
@@ -230,6 +230,34 @@ int main() {
                 // Displaying Results
                 cout << "The result of the matrix of the power of " << powerOf << " is:\n";
                 result.output();
+
+                break;
+
+            }
+
+            case 7: { // Determinant
+
+                int dimension;
+
+                // Number of rows and columns for the matrix.
+                cout << "Enter the dimension of the matrix:";
+                cin >> dimension;
+
+                Matrix matrix(dimension, dimension);
+
+                // Creating the entries of the Matrix.
+                cout << "Enter the elements of the matrix:\n";
+                fillMatrix(matrix, dimension, dimension);
+
+                // Displaying the Matrix
+                cout << "\nMatrix:\n";
+                matrix.output();
+
+                // Calculating the determinant of the matrix
+                double result = matrix.determinant();
+
+                // Displaying Results
+                cout << "The determinant of the matrix is: " << result << endl << endl;
 
                 break;
 
