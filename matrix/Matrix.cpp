@@ -1,6 +1,7 @@
 //
-// Updated by Moustafa Dimashkieh on 1/30/2023.
+// Updated by Moustafa Dimashkieh on 2/1/2023.
 //
+
 #include "Matrix.h"
 #include <iostream>
 #include <cmath>
@@ -131,14 +132,36 @@ Matrix Matrix::inverse() {
 
 // determinant of a matrix
 double Matrix::determinant() {
-    // check if matrix is square
     if (numRows != numCols) {
         cerr << "Cannot find determinant of a non-square matrix." << endl;
         exit(1);
     }
-    // code to calculate determinant of matrix goes here
-    // ...
-    //return result;
+
+    int size = numRows;
+    double det = 0;
+    if (size == 1) {
+        det = matrix[0][0];
+    }
+    else if (size == 2) {
+        det = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+    }
+    else {
+        for (int i = 0; i < size; i++) {
+            Matrix subMatrix(size - 1, size - 1);
+            for (int j = 1; j < size; j++) {
+                int subMatrixCol = 0;
+                for (int k = 0; k < size; k++) {
+                    if (k == i) {
+                        continue;
+                    }
+                    subMatrix.matrix[j-1][subMatrixCol] = matrix[j][k];
+                    subMatrixCol++;
+                }
+            }
+            det += pow(-1, i) * matrix[0][i] * subMatrix.determinant();
+        }
+    }
+    return det;
 }
 
 // output matrix to console
